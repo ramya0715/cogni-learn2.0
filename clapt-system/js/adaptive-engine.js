@@ -12,28 +12,37 @@ window.CLAPT_ADAPT = (function(){
       topicHistory: []
     };
   }
-  function updateAfterAnswer(session, ans){
+  function updateAfterAnswer(session, ans) {
     session.count++;
-    session.avgTime = ((session.avgTime*(session.count-1))+ans.timeMs)/session.count;
-    if(ans.correct){
-      session.consecutiveCorrect++;
-      session.consecutiveWrong=0;
-      // Promote difficulty
-      if(session.consecutiveCorrect>=2){
-        if(session.level==='easy') session.level='medium';
-        else if(session.level==='medium') session.level='hard';
-        session.consecutiveCorrect=0;
-      }
-    } else {
-      session.consecutiveWrong++;
-      session.consecutiveCorrect=0;
-      if(session.consecutiveWrong>=2){
-        if(session.level==='hard') session.level='medium';
-        else if(session.level==='medium') session.level='easy';
-        session.consecutiveWrong=0;
-      }
+    session.avgTime =((session.avgTime * (session.count - 1)) + ans.timeMs) / session.count;
+    if (ans.correct) {
+        session.consecutiveCorrect++;
+        session.consecutiveWrong = 0;
+        if (session.consecutiveCorrect >= 2) {
+            if (session.level === 'easy') {
+                session.level = 'medium';
+            }
+            else if (session.level === 'medium') {
+                session.level = 'hard';
+            }
+            session.consecutiveCorrect = 0;
+        }
     }
-  }
+    else {
+        session.consecutiveWrong++;
+        session.consecutiveCorrect = 0;
+        if (session.consecutiveWrong >= 2) {
+            if (session.level === 'hard') {
+                session.level = 'medium';
+            }
+            else if (session.level === 'medium') {
+                session.level = 'easy';
+            }
+            session.consecutiveWrong = 0;
+        }
+    }
+    localStorage.setItem("clapt_session", JSON.stringify(session));
+}
   function cognitiveLoad(session){
     // Rule-based: avgTime, accuracy, streak
     if(session.count===0) return {level:'low', score:10};
