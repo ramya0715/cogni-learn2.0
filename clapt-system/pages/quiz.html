@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Quiz · CLAPT</title>
+<link rel="stylesheet" href="../style.css"/></head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="brand"><span class="logo">◆</span> CLAPT</a>
+  <div class="nav-links">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="analytics.html">Analytics</a>
+    <a href="recommendations.html">Recommendations</a>
+    <button id="themeToggle" class="ghost-btn">🌙</button>
+  </div>
+</div></nav>
+
+<main class="quiz-shell" id="quizRoot">
+  <div id="startCard" class="q-card">
+    <h2 style="margin:0 0 6px">Adaptive Quiz</h2>
+    <p class="muted" style="margin:0 0 18px">The engine starts easy, then adapts to your speed and accuracy.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
+      <div>
+        <label class="muted" style="font-size:12px">Topic</label>
+        <select id="topicSel" class="search"></select>
+      </div>
+      <div>
+        <label class="muted" style="font-size:12px">Length</label>
+        <select id="lenSel" class="search">
+          <option value="5">5 questions</option>
+          <option value="10" selected>10 questions</option>
+          <option value="15">15 questions</option>
+          <option value="20">20 questions</option>
+        </select>
+      </div>
+    </div>
+    <button id="startBtn" class="btn primary">Begin →</button>
+  </div>
+
+  <div id="quizArea" style="display:none">
+    <div class="quiz-top">
+      <div class="meta">
+        <span id="progressTxt" class="tag">Q 1 / 10</span>
+        <span id="topicTag" class="tag">Topic</span>
+        <span id="diffTag" class="tag easy">easy</span>
+      </div>
+      <div class="timer" id="timer">00:00</div>
+    </div>
+    <div class="progress"><span id="progressBar" style="width:0%"></span></div>
+
+    <div class="q-card">
+      <p id="qText" class="q-text"></p>
+      <div id="opts" class="opts"></div>
+      <div id="hintBox"></div>
+      <div id="explainBox"></div>
+      <div class="cog-meter"><span id="cogPill" class="cog-pill cog-low">Cognitive Load: LOW</span></div>
+      <div class="q-actions">
+        <button id="quitBtn" class="btn ghost">Quit</button>
+        <button id="nextBtn" class="btn primary" style="display:none">Next →</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="../data/questions.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/storage.js"></script>
+<script src="../js/adaptive-engine.js"></script>
+<script src="../js/quiz.js"></script>
+</body>
+</html>

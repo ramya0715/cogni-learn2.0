@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Recommendations · CLAPT</title>
+<link rel="stylesheet" href="../style.css"/></head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="../index.html" class="brand"><span class="logo">◆</span> CLAPT</a>
+  <div class="nav-links">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="quiz.html">Quiz</a>
+    <a href="analytics.html">Analytics</a>
+    <a href="recommendations.html">Recommendations</a>
+    <button id="themeToggle" class="ghost-btn">🌙</button>
+  </div>
+</div></nav>
+
+<main class="page">
+  <h1 class="page-title">Smart Recommendations</h1>
+  <p class="page-sub">Personalised next steps generated from your local performance memory.</p>
+
+  <div class="kpi" style="margin-bottom:18px">
+    <div class="lbl">Placement Readiness</div>
+    <div class="val"><span id="readiness">0%</span></div>
+    <div class="bar" style="margin-top:10px"><span id="readinessBar" style="width:0%"></span></div>
+  </div>
+
+  <div class="panels">
+    <div class="panel"><h3>Weak Topics</h3><div id="weakList" class="list"></div></div>
+    <div class="panel"><h3>Strong Topics</h3><div id="strongList" class="list"></div></div>
+  </div>
+  <div class="panels" style="margin-top:16px">
+    <div class="panel"><h3>Suggested Next Quizzes</h3><div id="nextList" class="list"></div></div>
+    <div class="panel"><h3>Tips</h3><div id="tipsList" class="list"></div></div>
+  </div>
+</main>
+
+<script src="../data/questions.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/storage.js"></script>
+<script src="../js/recommendation-engine.js"></script>
+<script src="../js/recommendations.js"></script>
+</body>
+</html>
